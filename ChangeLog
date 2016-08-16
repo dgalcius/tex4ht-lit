@@ -1,0 +1,1050 @@
+2016-07-19  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-4ht.tex (lettrine.4ht) <\@lettrine>: use lettrine-*
+	for the <span class= name, since that's what is defined.
+
+2016-07-18  Karl Berry  <karl@freefriends.org>
+
+	* Makefile (dev_null): new macro for </dev/null.
+	(tex4ht_fonts_cjk_derived, etc.): use it when ht*tex is not
+	invoked directly, so we don't ever sit around waiting for input.
+	
+	* Makefile (diff-all): excise more from the diff results.
+	(diff1): use same $(diff).
+
+2016-07-18  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-sty.tex (tex4ht.sty): make macros patched by \pend:def
+       	and similar patching commands \long, in order to correctly support
+	macros defined with \newcommand.
+	<https://puszcza.gnu.org.ua/bugs/index.php?330>.
+
+2016-07-17  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-4ht.tex (\CodeLineNo): disable again since Michal's
+	compilation fails.
+
+2016-06-05  Karl Berry  <karl@freefriends.org>
+
+	* ProTex.sty,
+	* AlProTex.sty: symlinks to ../protex, so dev versions will be used.
+	* Makefile (common): depend on them.
+
+	* tex4ht-c.tex,
+	* tex4ht-4ht.tex: enable new protex option CodeLineNo to generate
+	#line directives in the .c files, and %line comments in *.4ht.
+	http://puszcza.gnu.org.ua/bugs/?136
+
+2016-07-04  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-html-speech.tex,
+	* tex4ht-jsml.tex,
+	* tex4ht-mathltx.tex: update copyrights.
+	* Makefile (diff-all): --ignore-matching-lines for boilerplate.
+
+2016-07-04  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-mkht.tex: don't hardwire c: paths.
+
+2016-07-03  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-4ht.tex,
+	* tex4ht-auto-script.tex,
+	* tex4ht-env.tex,
+	* tex4ht-sty.tex: remove nonascii chars in comments.
+
+2016-07-02  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-4ht.tex (lettrine.4ht): delete the .lettrine-Agrave css
+	with literal Agraves, to avoid encoding agony.  Update copyright.
+
+2016-07-01  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-sty.tex (tex4ht.sty),
+	* tex4ht-4ht.tex (usepackage.4ht): unify copyright notices.	
+
+2016-06-30  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-4ht.tex (latex.4ht): unify copyright notice.
+
+2016-06-30  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (latex.4ht): added \hbox{} to active
+	hyphen in order to prevent ligatures in environments defined
+	with \ScriptEnv.
+        <https://puszcza.gnu.org.ua/bugs/?319>
+
+2016-06-16  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex (html4.4ht): added \par command to sectioning
+	commands, text can be outside paragraphs otherwise.
+	<https://puszcza.gnu.org.ua/bugs/?279>
+
+2016-06-16  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (html4.4ht): Replaced non-breaking Unicode space with
+	normal spaces.
+	<https://puszcza.gnu.org.ua/bugs/?316>
+
+2016-06-16  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex: Fixed lstinline configuration - spurious \aftergroup.
+
+2016-06-15  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex (html4.4ht): Fixed configurations for
+	algorithmic package - indentation and line number align.
+	<https://puszcza.gnu.org.ua/bugs/index.php?314>
+
+2016-06-15  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex,
+	* tex4ht-misc.tex: move definitions for lettrine to tex4ht-4ht.tex.
+	* Makefile: don't compile tex4ht-misc.tex, it causes overwritting of
+	mktex4ht.cnf.
+
+2016-06-10  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex,
+	* tex4ht-html-speech.tex,
+	* tex4ht-html32.tex,
+	* tex4ht-ooffice.tex: remove explicit two-space indentation in
+	fancyvrb configuration; found by deimi.
+	<https://puszcza.gnu.org.ua/bugs/?308>
+
+2016-06-09  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-sty.tex (tex4ht.sty): added \:dontusepackage macro for
+	package loading preventing. Changed \@onefilewithoptions
+	patching, second argument is read and saved.
+	* tex4ht-4ht.tex (usepackage.4ht): added savetrees.sty to list
+	of packages detected upon their loading. It is blocked from
+	loading, as it causes tex4ht to fail.
+	* Makefile: add derived files.
+	https://puszcza.gnu.org.ua/bugs/?309
+
+2016-05-24  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (geometry.4ht): new file to turn off frame-drawing.
+	<http://puszcza.gnu.org.ua/bugs/?303>
+	* Makefile (tex4ht_4ht_derived): add it.
+
+2016-05-22  Karl Berry  <karl@freefriends.org>
+
+	* tex4ht-c.tex (search_file): return NULL rather than FALSE
+	to placate MiKTeX.  Report from Mojca,
+	https://sourceforge.net/p/miktex/bugs/2488.
+
+2016-03-31  Karl Berry  <karl@freefriends.org>
+
+	* Makefile (tex4ht_info_html4_derived, tex4ht_info_javahelp_derived,
+	tex4ht_misc_derived): new variables, targets.
+	
+	* tex4ht-docbook.tex,
+	* tex4ht-html-speech.tex,
+	* tex4ht-html0.tex,
+	* tex4ht-html32.tex,
+	* tex4ht-ooffice.tex,
+	* tex4ht-tei.tex: likewise make timestamps (\:today) in output
+	off by default, enabled with timestamp option.  In css files
+	and other contexts where an option is inconvenient, just remove them.
+	
+	* tex4ht-javahelp.tex,
+	* tex4ht-docbook.tex: reference tug rather than ohio-state.edu
+	web site.
+
+2016-03-31  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex (html4.4ht): remove timestamp from the HTML4
+	output.  It can be enabled with ``timestamp'' option.
+	https://puszcza.gnu.org.ua/bugs/index.php?277
+
+2016-03-16  Karl Berry  <karl@freefriends.org>
+
+	* Makefile (tex4ht_4ht_derived): add biblatex.4ht.
+
+2016-03-16  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (biblatex.4ht): support for biblatex 3.0.
+	http://puszcza.gnu.org.ua/bugs/?273>
+
+2016-02-01  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-fonts-noncjk.tex (pcrro8r.htf): Fixed some wrong characters.
+        http://puszcza.gnu.org.ua/bugs/?271
+
+2016-01-12  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (hyperref.4ht): Added support for \nameref* command,
+	http://tex.stackexchange.com/q/285339/2891,
+	http://puszcza.gnu.org.ua/bugs/?269.
+
+2016-01-04  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (biblatex.4ht): Fix for version checking
+
+2015-12-19  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-ooffice.tex (il2-pl.tcx url encoder): Fix the file
+	encoding. It is related to a earlier bug in tex4ht-html4.tex,
+	where input encoding error was reported with package babel when
+	LuaLaTeX was used for compilation.  Just
+	\input{html4-l2-url.4ht}.
+	Report from Guido Milanese, Dec 18 23:29:28 CET 2015,
+	http://tug.org/pipermail/tex4ht/2015q4/001326.html.
+
+	* tex4ht-4ht.tex (<frenchb luatex>, frenchn.4ht): disable LuaTeX
+	callback which causes tex4ht command to fail.
+
+2015-10-25  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-fonts-noncjk.tex (tcrm-uni): Updated support for textcomp
+	font tcrm.
+	* Makefile (tex4ht_fonts_noncjk_derived): add derived file
+	tex4ht.dir/texmf/tex4ht/ht-fonts/unicode/jknappen/tc/tcrm.htf.
+	https://puszcza.gnu.org.ua/bugs/?264
+
+2015-10-09  Karl Berry  <karl@freefriends.org>
+
+	* Makefile (tex4ht_fonts_modern_derived): new var for l7x,
+ 	and make it a target in addition to noncjk_derived.
+
+2015-10-09   Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-fonts-modern.tex (l7x-lmcsc.htf, l7x-lm.htf): fixed
+	diacritic marks for Lithuanian language.
+	https://puszcza.gnu.org.ua/bugs/?263
+
+2015-09-29  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-ooffice.tex (configure ooffice subscript),
+	* tex4ht-4ht.tex (subscript.4ht),
+	* tex4ht-html4.tex (configure html4 subscript):
+	support for \textsubscript.  http://puszcza.gnu.org.ua/bugs/?262
+	* Makefile (derived): add subscript.4ht.
+
+2015-08-05  Michal Hoftich  <michal.h21@gmail.com>
+        and Karl Berry <karl@gnu.org>
+
+	* Makefile (derived): add graphicx.4ht.
+	* tex4ht-4ht.tex (graphicx.4ht): usee .xbb for png/jpg/gif.
+	https://puszcza.gnu.org.ua/bugs/?257
+
+2015-06-10  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-ooffice.tex (save image name): use \Gin@ext rather than
+	\PictExt (which is apparently always png).  Report from Simon Spiegel,
+	10 Jun 2015 10:21:19.
+
+2015-06-10  Radhakrishnan CV  <cvr@river-valley.org>
+
+	* tex4ht-4ht.tex (biblatex): \blx@checksum was a parameterless
+         macro, while the current biblatex defines it as a macro with three
+         parameters. The macro has been redefined to match the package. The bug
+         was reported by Simon Spiegel and fix suggested by Michal Hoftich.
+         http://tug.org/pipermail/tex4ht/2015q2/001211.html (and previous).
+
+2015-06-07  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-fonts-noncjk.tex: huge update of T1-encoded fonts 
+ 	not previously supported by tex4ht.
+ 	* t1fontmake.lua: new script.
+ 	* t1fontsample.tex: new sample tex file.
+	* Makefile (tex4ht_fonts_noncjk_derived): add two of
+	the new aliases/t1fonts/*.htf files.
+ 	Mail of http://tug.org/pipermail/tex4ht/2015q2/001180.html.
+
+2015-05-25  Michal Hoftich  <michal.h21@gmail.com>
+        and Karl Berry <karl@gnu.org>
+
+	* tex4ht-fonts-noncjk.tex (eccc): new font support.
+	https://puszcza.gnu.org.ua/bugs/?253
+
+	* Makefile (tex4ht_fonts_noncjk_derived): add the new
+	 tex4ht.dir/texmf/tex4ht/ht-fonts/alias/ec/eccc.htf
+	 tex4ht.dir/texmf/tex4ht/ht-fonts/unicode/ec/eccc-uni.htf
+	as htf output examples.
+
+2015-04-14  Michal Hoftich  <michal.h21@gmail.com>
+
+	* Makefile (tex4ht_4ht_derived): add memoir.4ht.
+	* tex4ht-4ht.tex: improve array and tabular support for memoir;
+	input array,dcolumn,tabularx,booktabs.4ht, disable \columnlines.
+	http://puszcza.gnu.org.ua/bugs/?249
+
+2015-04-01  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-ooffice.tex: configure wrapfig to avoid spurious \par.
+	https://puszcza.gnu.org.ua/bugs/?247
+
+2015-02-17  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (spanish.4ht): fix missing csname when Spanish
+	babel is used.
+	https://puszcza.gnu.org.ua/bugs/?245
+	* Makefile (tex4ht_4ht_derived): add spanish.4ht.
+
+2015-02-11  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-ooffice.tex (ooffice.4ht): fix images in subfolders
+	handling -- everything in Pictures/.
+	* tex4ht-env.tex: likewise, copy all images to one directory.
+	https://puszcza.gnu.org.ua/bugs/?240
+
+2015-02-13  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-mathml.tex (mathml.4ht) <config mathml fontmath>: 
+	output <mi mathvariant=...
+	https://puszcza.gnu.org.ua/bugs/?226
+
+2015-02-09  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-mathml.tex (mathml.4ht) <config start mtext>: \ifmmode\else
+	<config math within mtext> to avoid some (but not all)
+	problems.  https://puszcza.gnu.org.ua/bugs/?244
+
+2015-02-07  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (scrartcl.4ht, scrbook.4ht, scrreprt.4ht):
+	koma-script patch, mail of 6 Feb 2015 12:32:10.
+	Original report from Alexander Willand.
+
+2015-02-04  Radhakrishnan CV  <cvr@river-valley.org>
+
+	* tex4ht-4ht.tex (biblatex.4ht): biblatex fixes for
+	http://puszcza.gnu.org.ua/bugs/?227.
+
+2015-01-29  Michal Hoftich <michal.h21@gmail.com> and Karl Berry <karl@gnu.org>
+
+	* Makefile (tex4ht_4ht_derived): add quoting.4ht.
+	* tex4ht-4ht.tex (quoting.4ht): new generated file,
+        to restore <p> when quoting.sty is sued.
+	http://puszcza.gnu.org.ua/bugs/?198
+	http://tex.stackexchange.com/q/140986/2891
+
+2015-01-28  Michal Hoftich <michal.h21@gmail.com>
+
+	* tex4ht-mathltx.tex
+	* tex4ht-mathml.tex
+	* tex4ht-html-speech.tex
+	* tex4ht-jsmath.tex: added \relax after \mathchar to prevent eating
+	following characters as hexadecimal numbers.
+	https://puszcza.gnu.org.ua/bugs/?230
+	http://tex.stackexchange.com/q/116340/2891
+	
+	* Makefile (diff): new convenience target.
+
+2015-01-28  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-4ht.tex (\CopyYear, \TeX4ht copyright): no need for
+	en-dash in copyrights.
+	(frenchb.4ht): rework copyrights, and install in TL,
+	including previously-unreleased testing for
+	\FDP@space vs. \FDP@colonspace.
+
+2015-01-26  Michal Hoftich <michal.h21@gmail.com> and Karl Berry <karl@gnu.org>
+
+	* tex4ht-html4.tex: generate {html4-l2-url,html4-russian-accents}.4ht
+	as separate files, to avoid having html4.4ht with multiple encodings,
+	which lualatex does not like to read.
+	* Makefile (tex4ht_html4_derived): add the new files.
+
+2015-01-23  Karl Berry  <karl@gnu.org>
+
+	* html4.4ht-released: new file, copied from current TL.
+	* Makefile (tex4ht_html4_derived): enable, and intersperse
+	copying of html4.4ht-released to html4.4ht with latex runs,
+	per comments at top of file.  No significant differences remain.
+
+2015-01-19  Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex,
+	* tex4ht-unicode.tex: remove spurious semicolon produced by
+	\textregistered command.
+	http://puszcza.gnu.org.ua/bugs/?242
+	http://tex.stackexchange.com/questions/223804/tex4ht-textregistered-and-an-unwanted-semicolon
+
+2014-10-28 Michal Hoftich  <michal.h21@gmail.com>
+
+	* tex4ht-html4.tex: Spurious comma in css selector causes CSS
+	validation error.
+	https://puszcza.gnu.org.ua/bugs/index.php?232
+
+2014-10-10  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht-c.tex: Avoid compiler warning [-Wunused-value].
+	(Backport from TeX Live.)
+
+2014-07-15  Michal Hoftich <michal.h21@gmail.com>
+
+	* tex4ht-4ht.tex (scrbook.4ht, scrreprt.4ht, scrartcl.4ht): Update 
+	KOMA-Script configurations to handle recent changes in the classes
+	for the \rm, etc., font commands.
+	http://tug.org/pipermail/tex4ht/2014q1/000913.html
+	http://puszcza.gnu.org.ua/bugs/?205
+	* Makefile (tex4ht_4ht_derived): add the affected scr*.4ht.
+
+2014-07-14  Karl Berry  <karl@gnu.org>
+
+	* Makefile (tex4ht_4ht_derived): add titlesec.4ht.
+	(titlesec 2005) <\ttl:straight@i>: use {#2} in case arg contains
+	brackets.  From Michal Hoftich.
+	http://tex.stackexchange.com/q/185866/
+	http://puszcza.gnu.org.ua/bugs/?215
+
+2014-07-13  Karl Berry  <karl@gnu.org>
+
+	* Makefile (tex4ht_4ht_derived): add listings.4ht.
+	* tex4ht-4ht.tex (listings.4ht): handle listings' escapechar
+	feature. From Michal Hoftich.
+	http://tex.stackexchange.com/q/188322/2891
+	http://puszcza.gnu.org.ua/bugs/?221
+
+2014-07-13  Karl Berry  <karl@gnu.org>
+
+	* Makefile (tex4ht_4ht_derived): add tocloft.4ht.
+	* tex4ht-4ht.tex (tocloft.4ht): new generated file,
+	to turn off tocloft toc's.  Fix from Michal Hoftich.
+	http://tex.stackexchange.com/q/190991/2891
+	http://puszcza.gnu.org.ua/bugs/?220
+
+	* tex4ht-4ht.tex (TeX4ht license text): new macro without
+	copyright line, used in the new .4ht file.
+	(TeX4ht copyright): use that after the copyright line.
+
+2014-06-27  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-4ht.tex (mwcls divs): omit error if not in vertical mode
+	in mwbk.cls. Report from Sylwester Arabas, fix from Deimantas Galcius.
+	http://puszcza.gnu.org.ua/bugs/?214
+
+2014-06-27  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-fonts-noncjk.tex,
+	* tex4ht-mathltx.tex,
+	* tex4ht-mathml.tex: copyright years and notices.
+
+2014-06-26  Chris Horler  <cshorler@googlemail.com>
+
+	* tex4ht-mathltx.tex,
+	* tex4ht-mathml.tex: use different align= values
+	instead of CSS text-align: values, per current standards.
+	Affects mathltx.4ht and mathml.4ht.
+	https://puszcza.gnu.org.ua/bugs/?219
+	
+2014-06-26  Karl Berry  <karl@gnu.org>
+
+	* Makefile (tex4ht_mathml_derived): new variable and target,
+	for tex4ht-mathml.tex.
+
+	* Makefile (tex4ht_fonts_noncjk_derived): evidently lm-htf.tex
+	is created from tex4ht-fonts-noncjk.tex, but not cmtex.htf.
+	Don't see where/how cmtex.htf is created.
+
+2014-05-22  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-4ht.tex (shared url): must use definition
+	of \set@mathnolig from previous url.sty, since we must
+	use literal _ rather than \sb for tex4ht.  (From CVR.)
+
+2014-02-21  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html4.tex (font-size): need \%, not %, for the 70%.
+	Found by Raphael Pinson, http://puszcza.gnu.org.ua/bugs/?189.
+
+2014-02-10  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-env.tex: use gs instead of convert for making bitmaps
+	(from dick, + notes).
+	
+	* tex4ht-env.tex: use %%~ or ~ instead of hardwired gurari dir.
+
+2013-10-07  Karl Berry  <karl@gnu.org>
+
+	* Makefile (tex4ht-fonts-{cjk,cjk-utf8,noncjk}*): new targets and vars.
+	* tex4ht-fonts-noncjk.tex: do not generate cjk and cjk-utf8.
+	* tex4ht-fonts-cjk-utf8.tex: copyright update.
+
+2013-07-02  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht-c.tex, tex4ht-t4ht.tex: Always include system headers
+	after <kpathsea/config.h>.  (Backport from TeX Live.)
+
+2013-03-01  Radhakrishnan CV  <cvr@river-valley.org>
+
+	* tex4ht-ooffice.tex: \NoFonts ... \EndNoFonts added in
+	{footnotetext} configuration to avoid font size anomalies in
+	footnotes when footnote text has accented characters. Patch
+	submitted by Nicolai Rostov, Feb 28, 2013 at 4:40 AM.
+
+2013-01-08  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	Backport from TeX Live.
+	* tex4ht-c.tex, tex4ht-t4ht.tex: Drop set but unused variables.
+
+2012-07-27  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	Adapt to W32TeX (backport from TeX Live).
+	* tex4ht-c.tex, tex4ht-t4ht.tex [WIN32]:
+	Use binary mode for output files.
+	Pass program name string to kpse_set_program_name.
+	Must not free argv.
+
+2011-09-18  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-unicode.tex (<double acute code>): \H{O} is 0150,
+	not 0151; http://www.fileformat.info/info/unicode/char/150/index.htm.
+	Report from Tibor Tomacs, 18 Sep 2011 12:34:09,
+	http://puszcza.gnu.org.ua/bugs/?147.
+
+2010-12-25  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex (<trace context>): allow -hA to enable all tracing.
+	(<find tex4ht.env>): fatal error if we don't find it, since the
+	next thing we do is seek on the file which crashes anyway.
+	(<kpathsea tex4ht.env>): use --format=othertext so we can find
+	tex4ht.env.  However, this is not enough to find the .htf files,
+	so it's still not possible to run the program as anything except
+	`tex4ht'.  So it goes.
+
+2010-12-24  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex: attempt to document which files I think these
+	programs read and write.  Fix a couple typos.
+
+2010-12-23  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex,
+	* tex4ht-htcmd.tex: rewrite some doc uses of "win32".
+
+	* common-info.tex (\CleanComment): lengthy comment about ultimate
+	failure trying to make the info option work with mzlatex.
+
+	* tex4ht-info-mml.tex (configure infomml tex4ht): use \Configure,
+	not the undefined \Contribution, add plain text heading
+	like the others.
+
+2010-12-16  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht-t4ht.tex: missed <<<.
+
+2010-12-14  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex (resplit argv for windows): new section, from Akira
+	Kakuto.
+	
+	* tex4ht-htcmd.tex: document that this not used.
+
+2010-11-17  Karl Berry  <karl@gnu.org>
+
+	* all files: switch to ranges in copyright notices.
+
+2010-11-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex: compiler options are a comment, despite #define's.
+
+2010-11-16  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (main): Initialize addr and media in order to avoid
+	compiler warnings.  Use '#if 0' to skip unreachable code.
+
+2010-11-12  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (filterGifScript): Avoid 'filtered_script might be used
+	uninitialized'.  Use NULL_SCRIPT.
+
+2010-03-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-auto-script.tex: unused, it seems.
+
+2010-03-12  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-bibtex2.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-11  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-cond4ht.tex: license notices.
+	* mktex4ht.cnf: new (empty) file, needed to run cond4ht.
+	* Makefile: add derivations.
+	* tex4ht-cpright.tex: note additional copy.
+	* all files: no period ending copyright lines, I guess.
+
+2010-03-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-docbook-xtpipes.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-07  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-docbook.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-06  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-env.tex: license notices.
+	(dvips convert (personal)): do not hardcode path to convert
+	(else zztex4ht-env.ps is left behind).
+	* Makefile: add derivations.
+
+2010-03-05  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-fonts-noncjk.tex: start at license notices.
+	Correct quoting of the
+	\Needs{"xhlatex tex4ht-fonts-4hf ..."} line.
+	* Makefile: start at derivations.
+
+2010-03-04  Radhakrishnan CV  <cvr@river-valley.org>
+
+	* tex4ht-mkht.tex (<MYcopyrightnotice): new macro; insert
+	notice in all generated scripts.
+
+2010-03-04  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-htcmd.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-03-03  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html-speech-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-03-02  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html-speech.tex,
+	* tex4ht-html0.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-28  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html32.tex,
+	* tex4ht-html4.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-26  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-info-mml.tex,
+	* tex4ht-info-ooffice.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-25  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-info-svg.tex,
+	* tex4ht-javahelp-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-23  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-javahelp.tex,
+	* tex4ht-jsmath.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-22  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-jsml-xtpipes.tex,
+	* tex4ht-jsml.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-21  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-mathltx.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-18  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-mathplayer.tex: update license notices.
+	* tex4ht-mkht.tex: update some license notices, more to come.
+	* Makefile: add derivations.
+
+2010-02-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-moz.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-16  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-oo-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-15  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-ooffice.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-14  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-ooimpress.tex: update license notices.
+	Remove would-be generation of ooimpress-math and ooimpress-mml,
+	since it seems they are not actually generated.
+	* Makefile: add derivations.
+
+2010-02-13  Karl Berry  <karl@gnu.org>
+
+	* common-code.tex: new file.
+	* tex4ht-unicode.tex: use it.
+
+	* tex4ht-options.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-12  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-sty.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-11  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-svg.tex: update license notices.
+	* Makefile: add derivations.
+
+	* All files so far: Put current (2010) copyright line first.
+
+2010-02-10  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-t4ht.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-09  Karl Berry  <karl@gnu.org>
+
+	* tex4t-tei.tex: update license notices.
+	* Makefile: add derivations.
+	* tex4ht-cpright.tex: new macro |TeX4ht copywrite,
+	to output the license notice with a \write to the log file.
+
+2010-02-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-unicode.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-07  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-word.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-06  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-xhtml-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+	* tex4ht-xhtmml-xtpipes.tex,
+	* xtpipes.tex: \message when running the lit sources doesn't
+	seem useful.  Remove it.
+
+2010-02-05  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-xhtmml-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-03  Karl Berry  <karl@gnu.org>
+
+	* wripro.tex: add license notice.
+
+2010-02-02  Karl Berry  <karl@gnu.org>
+
+	* xtpipes.tex: add derivation info and copyright messages
+	to generated files.
+	* tex4ht-cpright.tex: minimize lines.
+	* Makefile: start at new file.
+
+2010-02-23  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (get_env_dir) [WIN32]: Declare as static.
+
+2010-02-20  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht.c [__MINGW32__]: #define HAVE_BOOLEAN in order to avoid
+	conflicting declaration for boolean from kpathsea/types.h.
+	Declare various param strings as const.
+
+2009-09-30  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c, tex4ht.c: Declare numerous param and local strings as
+	const.
+
+This file is public domain.  Started 2010, Karl Berry.
+2011-09-18  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-unicode.tex (<double acute code>): \H{O} is 0150,
+	not 0151; http://www.fileformat.info/info/unicode/char/150/index.htm.
+	Report from Tibor Tomacs, 18 Sep 2011 12:34:09,
+	http://puszcza.gnu.org.ua/bugs/?147.
+
+2010-12-25  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex (<trace context>): allow -hA to enable all tracing.
+	(<find tex4ht.env>): fatal error if we don't find it, since the
+	next thing we do is seek on the file which crashes anyway.
+	(<kpathsea tex4ht.env>): use --format=othertext so we can find
+	tex4ht.env.  However, this is not enough to find the .htf files,
+	so it's still not possible to run the program as anything except
+	`tex4ht'.  So it goes.
+
+2010-12-24  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex: attempt to document which files I think these
+	programs read and write.  Fix a couple typos.
+
+2010-12-23  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex,
+	* tex4ht-htcmd.tex: rewrite some doc uses of "win32".
+
+	* common-info.tex (\CleanComment): lengthy comment about ultimate
+	failure trying to make the info option work with mzlatex.
+
+	* tex4ht-info-mml.tex (configure infomml tex4ht): use \Configure,
+	not the undefined \Contribution, add plain text heading
+	like the others.
+
+2010-12-16  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht-t4ht.tex: missed <<<.
+
+2010-12-14  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex,
+	* tex4ht-t4ht.tex (resplit argv for windows): new section, from Akira
+	Kakuto.
+	
+	* tex4ht-htcmd.tex: document that this not used.
+
+2010-11-17  Karl Berry  <karl@gnu.org>
+
+	* all files: switch to ranges in copyright notices.
+
+2010-11-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex: compiler options are a comment, despite #define's.
+
+2010-11-16  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (main): Initialize addr and media in order to avoid
+	compiler warnings.  Use '#if 0' to skip unreachable code.
+
+2010-11-12  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (filterGifScript): Avoid 'filtered_script might be used
+	uninitialized'.  Use NULL_SCRIPT.
+
+2010-03-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-auto-script.tex: unused, it seems.
+
+2010-03-12  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-bibtex2.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-11  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-c.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-cond4ht.tex: license notices.
+	* mktex4ht.cnf: new (empty) file, needed to run cond4ht.
+	* Makefile: add derivations.
+	* tex4ht-cpright.tex: note additional copy.
+	* all files: no period ending copyright lines, I guess.
+
+2010-03-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-docbook-xtpipes.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-07  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-docbook.tex: license notices.
+	* Makefile: add derivations.
+
+2010-03-06  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-env.tex: license notices.
+	(dvips convert (personal)): do not hardcode path to convert
+	(else zztex4ht-env.ps is left behind).
+	* Makefile: add derivations.
+
+2010-03-05  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-fonts-noncjk.tex: start at license notices.
+	Correct quoting of the
+	\Needs{"xhlatex tex4ht-fonts-4hf ..."} line.
+	* Makefile: start at derivations.
+
+2010-03-04  Radhakrishnan CV  <cvr@river-valley.org>
+
+	* tex4ht-mkht.tex (<MYcopyrightnotice): new macro; insert
+	notice in all generated scripts.
+
+2010-03-04  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-htcmd.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-03-03  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html-speech-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-03-02  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html-speech.tex,
+	* tex4ht-html0.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-28  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-html32.tex,
+	* tex4ht-html4.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-26  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-info-mml.tex,
+	* tex4ht-info-ooffice.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-25  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-info-svg.tex,
+	* tex4ht-javahelp-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-23  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-javahelp.tex,
+	* tex4ht-jsmath.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-22  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-jsml-xtpipes.tex,
+	* tex4ht-jsml.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-21  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-mathltx.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-18  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-mathplayer.tex: update license notices.
+	* tex4ht-mkht.tex: update some license notices, more to come.
+	* Makefile: add derivations.
+
+2010-02-17  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-moz.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-16  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-oo-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-15  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-ooffice.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-14  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-ooimpress.tex: update license notices.
+	Remove would-be generation of ooimpress-math and ooimpress-mml,
+	since it seems they are not actually generated.
+	* Makefile: add derivations.
+
+2010-02-13  Karl Berry  <karl@gnu.org>
+
+	* common-code.tex: new file.
+	* tex4ht-unicode.tex: use it.
+
+	* tex4ht-options.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-12  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-sty.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-11  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-svg.tex: update license notices.
+	* Makefile: add derivations.
+
+	* All files so far: Put current (2010) copyright line first.
+
+2010-02-10  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-t4ht.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-09  Karl Berry  <karl@gnu.org>
+
+	* tex4t-tei.tex: update license notices.
+	* Makefile: add derivations.
+	* tex4ht-cpright.tex: new macro |TeX4ht copywrite,
+	to output the license notice with a \write to the log file.
+
+2010-02-08  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-unicode.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-07  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-word.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-06  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-xhtml-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+	* tex4ht-xhtmml-xtpipes.tex,
+	* xtpipes.tex: \message when running the lit sources doesn't
+	seem useful.  Remove it.
+
+2010-02-05  Karl Berry  <karl@gnu.org>
+
+	* tex4ht-xhtmml-xtpipes.tex: update license notices.
+	* Makefile: add derivations.
+
+2010-02-03  Karl Berry  <karl@gnu.org>
+
+	* wripro.tex: add license notice.
+
+2010-02-02  Karl Berry  <karl@gnu.org>
+
+	* xtpipes.tex: add derivation info and copyright messages
+	to generated files.
+	* tex4ht-cpright.tex: minimize lines.
+	* Makefile: start at new file.
+
+2010-02-23  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c (get_env_dir) [WIN32]: Declare as static.
+
+2010-02-20  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* tex4ht.c [__MINGW32__]: #define HAVE_BOOLEAN in order to avoid
+	conflicting declaration for boolean from kpathsea/types.h.
+	Declare various param strings as const.
+
+2009-09-30  Peter Breitenlohner  <peb@mppmu.mpg.de>
+
+	* t4ht.c, tex4ht.c: Declare numerous param and local strings as
+	const.
+
+This file is public domain.  Started 2010, Karl Berry.
