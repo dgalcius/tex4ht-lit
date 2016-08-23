@@ -392,8 +392,7 @@ ooimpress $(tex4ht_ooimpress_derived): tex4ht-ooimpress.tex $(common)
 	htlatex $< "xhtml,4,sections+" "" "" $(tex_1opt)
 
 options $(tex4ht_options_derived): tex4ht-options.tex $(common)
-## TODO: set $(tex_1opt)
-	mk4ht xhlatex $< $(dev_null)
+	xhlatex $< "html,3,sections+" "" "" $(tex_1opt)
 
 sty $(tex4ht_sty_derived): tex4ht-sty.tex $(common)
 	$(HTTEX) $< $(dev_null)
@@ -533,7 +532,7 @@ clean:
 	rm -rf $(xtpipesdir) # xtpipes files
 	rm -f info*.4ht      # redundant
 	rm -rf tex4ht.dir
-	rm -f tex4ht.4ht tex4ht.jar
+	rm -f tex4ht.jar
 
 clean1:
 	rm -f $(f).[0-s]* $(f).[u-z]* $(f).trc
