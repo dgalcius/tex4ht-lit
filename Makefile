@@ -14,7 +14,7 @@ tex_opts = --interaction=errorstopmode -recorder #--file-line-error
 tex_1opt = "$(tex_opts)" # must be quoted, passing to shell script
 dev_null = </dev/null    # when we don't call tex directly.
 # would be better extra_bin:=./extra-bin or extra_bin:=../extra-bin ??
-extra_bin := ./
+extra_bin := ./extra-bin
 ht_bin := ../bin/ht/unix
 PATH := $(shell echo $$PATH)
 ## setting PATH as TeX Live 2016 (DVD) does not ship with 'xhlatex'
