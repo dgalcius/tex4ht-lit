@@ -1,3 +1,9 @@
+2016-08-22  deimi  <deimantas.galcius@gmail.com>
+
+	* Makefile: move xmllint, vcss to ./extra-bin
+	* Makefile: amend "options (tex4ht_options_derived)" rule
+	  use xhlatex instead of mk4ht; set $(tex_1opt) for fls file
+
 2016-07-19  Karl Berry  <karl@freefriends.org>
 
 	* tex4ht-4ht.tex (lettrine.4ht) <\@lettrine>: use lettrine-*
