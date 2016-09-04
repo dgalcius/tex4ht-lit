@@ -1955,16 +1955,5 @@ import java.io.FileReader;
 >>>
 
 
-
-\AtEndDocument{\Needs{%
-    "cd /opt/cvr/gurari/xtpipes.dir
-     ;  
-     jar cf tex4ht.jar *
-     ;
-     mv tex4ht.jar /opt/cvr/gurari/tex4ht.dir/texmf/tex4ht/bin/. 
-     ;
-     cp /opt/cvr/gurari/xtpipes.dir/xtpipes/lib/* 
-        /opt/cvr/gurari/tex4ht.dir/texmf/tex4ht/xtpipes/.
-"}}
-
+\input{xtpipes-jar.tex}
 \end{document}

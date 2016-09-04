@@ -720,19 +720,7 @@ into
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % END END END END END END END END END END END END END END END END 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\AtEndDocument{\Needs{%
-    "cd /home/4/gurari/xtpipes.dir
-     ;  
-     jar cf tex4ht.jar *
-     ;
-     mv tex4ht.jar /home/4/gurari/tex4ht.dir/texmf/tex4ht/bin/. 
-     ;
-     cp /home/4/gurari/xtpipes.dir/xtpipes/lib/* 
-        /home/4/gurari/tex4ht.dir/texmf/tex4ht/xtpipes/.
-"}}
-
-
+\input{xtpipes-jar.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -4477,16 +4477,7 @@ rmdir /s /q doc.dir
 ../../..;..;../../jldoc;../../xtpipes/cgjsapi.jar;../../xtpipes/xtpipes.jar;../../jldoc/jldoc.jar;../../ml2xml.dir/ml2xml.dir/bin/ml2xml.jar
 
 \ifOption{win} {}{
-\AtEndDocument{\Needs{%
-    "cd /home/4/gurari/xtpipes.dir
-     ;
-     jar cf tex4ht.jar *
-     ;
-     mv tex4ht.jar /home/4/gurari/tex4ht.dir/texmf/tex4ht/bin/.
-     ;
-     cp /home/4/gurari/xtpipes.dir/xtpipes/lib/*
-        /home/4/gurari/tex4ht.dir/texmf/tex4ht/xtpipes/.
-"}}
+ \input{xtpipes-jar.tex}
 }
 
 
